@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AppModule } from '../app.module';
 
 import { Tipo } from '../models/Tipo';
 
@@ -10,7 +9,7 @@ import { Tipo } from '../models/Tipo';
 })
 export class TypesService {
 
-url:string = 'api/Types';
+url:string = 'https://localhost:7089/api/tipos';
 
   constructor(private http: HttpClient) { }
 
