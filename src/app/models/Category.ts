@@ -1,7 +1,7 @@
 import { Tipo } from "./Tipo";
 
 export class Category {
-    CategoryId: number | undefined;
+    id: number | undefined;
     name: string | undefined;
     icone: string | undefined;
     typeId:number | undefined;
