@@ -2,40 +2,36 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Category } from 'src/app/models/Category';
-import { Tipo } from 'src/app/models/Tipo';
-import { CategorysService } from 'src/app/services/categorys.service';
-import { TypesService } from 'src/app/services/types.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FunctionService } from 'src/app/services/function.service';
+import { Funcao } from 'src/app/models/Funcao';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['../list-categorys/list-categorys.component.css']
+  styleUrls: ['../../Categoria/list-categorys/list-categorys.component.css']
 })
-export class EditCategoryComponent implements OnInit {
-nameCategory : string | undefined
-category : Observable<Category> | undefined
-tipos : Tipo[] | undefined
+export class EditFunctionComponent implements OnInit {
+nameFunction : string | undefined
+function : Observable<Funcao> | undefined
 form: any
-id!: number;
+id!: string;
 
   constructor(private router : Router,
     private route : ActivatedRoute,
-    private categoryService : CategorysService,
-    private typesService : TypesService, private SnackBar : MatSnackBar) { }
+    private functionService : FunctionService, private SnackBar : MatSnackBar) { }
 
   ngOnInit(): void {
     
-    this.id = this.route.snapshot.params['id'];
-    this.typesService.GetAll().subscribe(result => {this.tipos = result});
-    this.categoryService.GetCategoryID(this.id).subscribe(result => {
-      this.nameCategory = result.name;
+    
+    this.id = this.route.snapshot.params['FunctionId'];
+    this.functionService.GetFunctionID(this.id).subscribe(result => {
+      this.nameFunction = result.name;
       this.form = new FormGroup({
       Id : new FormControl(result.id),
       name : new FormControl(result.name),
-      icone : new FormControl(result.icone),
-      typeId : new FormControl(result.typeId)
+      description : new FormControl(result.description),
+      normalizedName : new FormControl(result.normalizedName),
     });
   });
   }
@@ -45,10 +41,10 @@ id!: number;
   }
 
   UpdateCategory() : void {
-    const categoria = this.form.value;
+    const functions = this.form.value;
 
-    this.categoryService.PutCategory(this.id, categoria).subscribe(result => {
-      this.router.navigate(['categorys/list'])
+    this.functionService.PutFunction(this.id, functions).subscribe(result => {
+      this.router.navigate(['function/list'])
       this.SnackBar.open(result.message, null!, {
         duration: 2000,
         horizontalPosition: 'center',
@@ -74,6 +70,7 @@ id!: number;
   }
 
   BackList() : void {
-    this.router.navigate(['categorys/list'])
+    this.router.navigate(['function/list'])
   }
+
 }

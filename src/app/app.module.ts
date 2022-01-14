@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,8 +23,20 @@ import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { EditComponent } from './componentes/Categoria/edit/edit.component';
+import { EditCategoryComponent } from './componentes/Categoria/edit/edit.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { CommonModule } from '@angular/common';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressBarModule} from '@angular/material/progress-bar';
+import { ListFunctionComponent } from './componentes/Funcao/list-function/list-function.component';
+import { DialogDeleteFunctionComponent } from './componentes/Funcao/list-function/list-function.component';
+import { EditFunctionComponent } from './componentes/Funcao/edit/edit.component';
+import { NewFunctionComponent } from './componentes/Funcao/new-function/new-function.component';
+
+
 
 
 @NgModule({
@@ -31,8 +44,12 @@ import {MatDialogModule} from '@angular/material/dialog';
     AppComponent,
     ListCategorysComponent,
     NewCategoryComponent,
-    EditComponent,
+    EditCategoryComponent,
     DialogDeleteCategorysComponent,
+    ListFunctionComponent,
+    DialogDeleteFunctionComponent,
+    EditFunctionComponent,
+    NewFunctionComponent
   ],
   imports: [
     HttpClientModule,
@@ -51,7 +68,14 @@ import {MatDialogModule} from '@angular/material/dialog';
     ReactiveFormsModule,
     MatSidenavModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    MatAutocompleteModule,
+    CommonModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSnackBarModule,
+    MatProgressBarModule
   ],
   providers: [
     HttpClientModule,
