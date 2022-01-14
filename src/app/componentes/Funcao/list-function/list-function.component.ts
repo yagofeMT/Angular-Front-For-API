@@ -50,7 +50,7 @@ export class ListFunctionComponent implements OnInit{
 
     this.displayedColumns = this.ShowColumns();
 
-    // this.NamesCategorys = this.autoCompleteInput.valueChanges.pipe(startWith(''), map(name => this.FilterNames(name)));
+    this.NamesFunctions = this.autoCompleteInput.valueChanges.pipe(startWith(''), map(name => this.FilterNames(name)));
   }
 
   ShowColumns(): string[] {
@@ -72,28 +72,23 @@ export class ListFunctionComponent implements OnInit{
     });
   }
 
-  Edit(id : string){
-    this.router.navigate(['/function/edit/' + id]);
+  FilterNames(name: string): string[] {
+    if (name.trim().length >= 3) {
+      this.FunctionService.FilterFunctions(name.toLowerCase()).subscribe(result => {
+        this.functions.data = result;
+      });
+    }
+    else {
+      if (name === '') {
+        this.FunctionService.GetAll().subscribe(result => {
+          this.functions.data = result;
+        });
+      }
+    }
+
+    return this.optionsFunction.filter(func =>
+      func.toLowerCase().includes(name.toLowerCase()));
   }
-
-
-  // FilterNames(name: string): string[] {
-  //   if (name.trim().length >= 3) {
-  //     this.FunctionService.FilterCategorys(name.toLowerCase()).subscribe(result => {
-  //       this.categorys.data = result;
-  //     });
-  //   }
-  //   else {
-  //     if (name === '') {
-  //       this.FunctionService.GetAll().subscribe(result => {
-  //         this.categorys.data = result;
-  //       });
-  //     }
-  //   }
-
-  //   return this.optionsCategorys.filter(categoria =>
-  //     categoria.toLowerCase().includes(name.toLowerCase()));
-  // }
 }
 
 

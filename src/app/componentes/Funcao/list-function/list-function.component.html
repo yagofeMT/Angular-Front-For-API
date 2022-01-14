@@ -42,7 +42,7 @@
             <th mat-header-cell *matHeaderCellDef>Ações</th>
             <td mat-cell *matCellDef="let functions">
                 <button mat-mini-fab color="primary">
-                    <mat-icon (click)="Edit(functions.id)">edit</mat-icon>
+                    <mat-icon [routerLink]="['/function/edit',functions.id]">edit</mat-icon>
                 </button>
                 <button mat-mini-fab color="warn" (click)="ShowDialog(functions.id, functions.name)">
                     <mat-icon>delete</mat-icon>

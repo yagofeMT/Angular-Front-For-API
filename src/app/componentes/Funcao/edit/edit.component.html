@@ -19,19 +19,10 @@
                 </div>
                 <div>
                     <mat-form-field>
-                        <mat-label>Icone</mat-label>
+                        <mat-label>Description</mat-label>
                         <input matInput type="text" formControlName="description" placeholder="enter the icon cod of the function" required>
                         <mat-error *ngIf="propriedade.description.touched && propriedade.description.invalid">
                             <sup>*</sup> Enter description function
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div>
-                    <mat-form-field>
-                        <mat-label>Icone</mat-label>
-                        <input matInput type="text" formControlName="normalizedName" placeholder="enter the icon cod of the function" required>
-                        <mat-error *ngIf="propriedade.normalizedName.touched && propriedade.normalizedName.invalid">
-                            <sup>*</sup> Enter normalizedName function
                         </mat-error>
                     </mat-form-field>
                 </div>

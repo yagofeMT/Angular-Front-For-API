@@ -7,6 +7,7 @@ import { EditCategoryComponent } from './componentes/Categoria/edit/edit.compone
 import { ListFunctionComponent } from './componentes/Funcao/list-function/list-function.component';
 import { EditFunctionComponent } from './componentes/Funcao/edit/edit.component';
 import { NewFunctionComponent } from './componentes/Funcao/new-function/new-function.component';
+import { RegisterUserComponent } from './componentes/Register/register-user/register-user.component';
 
 
 const routes: Routes = [
@@ -23,10 +24,13 @@ const routes: Routes = [
     path : 'function/list', component : ListFunctionComponent
   },
   {
-    path: 'function/edit' , component: EditFunctionComponent
+    path: 'function/edit/:id' , component: EditFunctionComponent
   },
   {
     path : 'function/newfunction', component: NewFunctionComponent
+  },
+  {
+    path : 'register', component: RegisterUserComponent
   }
 ];
 
