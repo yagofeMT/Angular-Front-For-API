@@ -21,3 +21,19 @@
     padding-top: 30px;
     padding-bottom: 30px;
 }
+
+
+.DivAutoComplete{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.AutoCompleteInput{
+    width: 500px;
+}
+
+.paginator{
+    display: flex;
+    padding-top: 30px;
+    justify-content: center;
+}
