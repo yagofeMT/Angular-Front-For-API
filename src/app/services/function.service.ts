@@ -13,6 +13,9 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class FunctionService {
+  filter(arg0: (func: any) => any): string[] {
+    throw new Error('Method not implemented.');
+  }
 
   url: string = 'https://localhost:7089/api/Functions';
 
@@ -40,6 +43,12 @@ export class FunctionService {
   DeleteFunction(FunctionId: string): Observable<any> {
     const apiUrl = `${this.url}/${FunctionId}`;
     return this.http.delete<number>(apiUrl, httpOptions)
+  }
+
+  FilterFunctions(name : string) : Observable<Funcao[]>{
+  const apiUrl = `${this.url}/FilterFunctions/${name}`;
+
+  return this.http.get<Funcao[]>(apiUrl);
   }
 
   StringAleatoria() : string

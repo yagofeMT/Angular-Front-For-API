@@ -35,6 +35,7 @@ import { ListFunctionComponent } from './componentes/Funcao/list-function/list-f
 import { DialogDeleteFunctionComponent } from './componentes/Funcao/list-function/list-function.component';
 import { EditFunctionComponent } from './componentes/Funcao/edit/edit.component';
 import { NewFunctionComponent } from './componentes/Funcao/new-function/new-function.component';
+import { RegisterUserComponent } from './componentes/Register/register-user/register-user.component';
 
 
 
@@ -49,7 +50,8 @@ import { NewFunctionComponent } from './componentes/Funcao/new-function/new-func
     ListFunctionComponent,
     DialogDeleteFunctionComponent,
     EditFunctionComponent,
-    NewFunctionComponent
+    NewFunctionComponent,
+    RegisterUserComponent
   ],
   imports: [
     HttpClientModule,

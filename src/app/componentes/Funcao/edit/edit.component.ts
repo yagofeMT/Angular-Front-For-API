@@ -24,14 +24,13 @@ id!: string;
   ngOnInit(): void {
     
     
-    this.id = this.route.snapshot.params['FunctionId'];
+    this.id = this.route.snapshot.params['id'];
     this.functionService.GetFunctionID(this.id).subscribe(result => {
       this.nameFunction = result.name;
       this.form = new FormGroup({
       Id : new FormControl(result.id),
       name : new FormControl(result.name),
-      description : new FormControl(result.description),
-      normalizedName : new FormControl(result.normalizedName),
+      description : new FormControl(result.description)
     });
   });
   }

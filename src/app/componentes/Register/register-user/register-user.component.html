@@ -1,0 +1,51 @@
+<div class="formRegister">
+    <mat-card class="title">
+        <mat-card-header class="header">
+            <mat-card-title style="text-align: center;">
+                <h2 style="color: #297fcf;">Sign Up</h2>
+            </mat-card-title>
+        </mat-card-header>
+
+        <form [formGroup]="form" (ngSubmit)="PostUser()">
+            <mat-card-content>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Username</mat-label>
+                            <input matInput type="text" formControlName="Username" placeholder="Enter Username">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>CPF</mat-label>
+                            <input matInput type="password" formControlName="CPF" placeholder="Enter CPF">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Profission</mat-label>
+                            <input matInput type="text" formControlName="Profissao" placeholder="Enter Profissao">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Email</mat-label>
+                            <input matInput type="email" formControlName="Email" placeholder="Enter Email">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Profission</mat-label>
+                            <input matInput type="text" formControlName="Profissao" placeholder="Enter Profissao">
+                        </mat-form-field>
+                    </div>
+            </mat-card-content>
+            <mat-divider></mat-divider>
+            <mat-card-actions>
+                <div>
+                    <button mat-stroked-button type="submit" color="primary" [disabled]="form.invalid">Register</button>
+                    <button mat-stroked-button type="button" color="warn">Back</button>
+                </div>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>
