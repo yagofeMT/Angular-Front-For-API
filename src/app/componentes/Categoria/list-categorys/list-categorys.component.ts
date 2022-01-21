@@ -8,6 +8,8 @@ import { startWith, map } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthGuardService } from 'src/app/services/auth-guard.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,6 +24,7 @@ export class ListCategorysComponent implements OnInit {
   autoCompleteInput = new FormControl();
   optionsCategorys: string[] = [];
   NamesCategorys: Observable<string[]> | undefined;
+  isAdm : boolean | undefined;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -31,9 +34,16 @@ export class ListCategorysComponent implements OnInit {
 
 
 
-  constructor(private CategorysService: CategorysService, private dialog: MatDialog) { }
+  constructor(private CategorysService: CategorysService, private dialog: MatDialog, private authGuard : AuthGuardService, private router : Router) { }
 
   ngOnInit(): void {
+
+    if(localStorage.getItem("tokenUserSignIn") == null){
+      this.router.navigate(["login"])
+    }
+
+    this.isAdm = this.authGuard.CheckAdm();
+
 
     this.CategorysService.GetAll().subscribe((result) => {
       result.forEach((categorias) => {

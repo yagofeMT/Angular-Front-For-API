@@ -1,0 +1,26 @@
+<app-header></app-header>
+
+
+<mat-sidenav-container>
+    <mat-sidenav mode="side" opened>
+            <mat-list style="cursor: pointer;">
+                    <mat-list-item routerLink="categorys/list">
+                        <mat-icon>reorder</mat-icon> Categorys
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item routerLink="function/list">
+                        <mat-icon>supervised_user_circle</mat-icon> Functions
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item routerLink="card">
+                        <mat-icon>credit_card</mat-icon> Card
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+            </mat-list>
+    </mat-sidenav>
+
+
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

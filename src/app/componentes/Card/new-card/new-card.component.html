@@ -1,0 +1,71 @@
+<div>
+   <mat-progress-bar mode="buffer"></mat-progress-bar>
+</div>
+<div class="divCard">
+   <mat-card>
+       <mat-card-header>
+           <mat-card-title>
+               <h3>Sign In Category</h3>
+           </mat-card-title>
+       </mat-card-header>
+       <form>
+
+           <!-- <div class="cardErros" *ngIf="erros.length > 0">
+               <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                       there is an error
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-divider></mat-divider>
+                <mat-card-content>
+                    <div class="divErros">
+                        <h4 class="textError" *ngFor="let erro of erros">{{erro}}</h4>
+                    </div>
+                </mat-card-content>
+               </mat-card>
+           </div> -->
+
+           <mat-card-content>
+               <div>
+                   <mat-form-field>
+                       <mat-label>Name</mat-label>
+                       <input matInput type="text" formControlName="name" placeholder="Enter the name of the category"
+                           required>
+                       <!-- <mat-error *ngIf="propriedade.name.touched && propriedade.name.invalid">
+                           <sup>*</sup> Enter name category
+                       </mat-error> -->
+                   </mat-form-field>
+               </div>
+               <div>
+                   <mat-form-field>
+                       <mat-label>Icone</mat-label>
+                       <input matInput type="text" formControlName="icone"
+                           placeholder="Enter the icon cod of the category" required>
+                       <!-- <mat-error *ngIf="propriedade.icone.touched && propriedade.icone.invalid">
+                           <sup>*</sup> Enter name icon
+                       </mat-error> -->
+                   </mat-form-field>
+               </div>
+               <!-- <div>
+                   <mat-form-field>
+                       <mat-label>Select Type</mat-label>
+                       <mat-select formControlName="typeId" required="">
+                           <mat-option *ngFor="let tipo of tipos" [value]="tipo.id">{{tipo.name}}</mat-option>
+                       </mat-select>
+                        <mat-error *ngIf="propriedade.typeId.touched && propriedade.typeId.invalid">
+                           <sup>*</sup> Enter name type
+                       </mat-error>
+                   </mat-form-field>
+               </div> -->
+           </mat-card-content>
+           <mat-divider></mat-divider>
+           <mat-card-actions>
+               <div>
+                   <button type="submit" mat-stroked-button color="primary">Save</button>
+                   <button mat-stroked-button color="warn" type="button">Back</button>
+               </div>
+           </mat-card-actions>
+       </form>
+   </mat-card>
+</div>

@@ -1,0 +1,33 @@
+<div class="formRegister">
+    <mat-card class="title">
+        <mat-card-header class="header">
+            <mat-card-title style="text-align: center;">
+                <h2 style="color: #297fcf;">Sign In</h2>
+            </mat-card-title>
+        </mat-card-header>
+
+        <form [formGroup]="form"  (ngSubmit)="Login()">
+            <mat-card-content>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Email</mat-label>
+                            <input matInput type="email" formControlName="Email" placeholder="Enter Email" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Password</mat-label>
+                            <input  matInput type="password" formControlName="Password" placeholder="Enter Password" required>
+                        </mat-form-field>
+                    </div>
+            </mat-card-content>
+            <mat-divider></mat-divider>
+            <mat-card-actions>
+                <div>
+                    <button mat-stroked-button type="submit" color="primary" [disabled]="form.invalid">Login</button>
+                    <button mat-stroked-button type="button" color="warn" [routerLink]="['/register']">Register</button>
+                </div>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>

@@ -7,6 +7,7 @@ import { Tipo } from 'src/app/models/Tipo';
 import { CategorysService } from 'src/app/services/categorys.service';
 import { TypesService } from 'src/app/services/types.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthGuardService } from 'src/app/services/auth-guard.service';
 
 @Component({
   selector: 'app-edit',
@@ -19,14 +20,25 @@ category : Observable<Category> | undefined
 tipos : Tipo[] | undefined
 form: any
 id!: number;
+isAdm : boolean | undefined;
 
   constructor(private router : Router,
     private route : ActivatedRoute,
     private categoryService : CategorysService,
-    private typesService : TypesService, private SnackBar : MatSnackBar) { }
+    private typesService : TypesService, private SnackBar : MatSnackBar, private authGuard : AuthGuardService) { }
 
   ngOnInit(): void {
     
+    if(localStorage.getItem("tokenUserSignIn") == null){
+      this.router.navigate(["login"])
+    }
+    
+    this.isAdm = this.authGuard.CheckAdm();
+
+    if(this.isAdm == false){
+      this.router.navigate(["categorys/list"]);
+    }
+
     this.id = this.route.snapshot.params['id'];
     this.typesService.GetAll().subscribe(result => {this.tipos = result});
     this.categoryService.GetCategoryID(this.id).subscribe(result => {
