@@ -1,0 +1,15 @@
+.mat-sidenav
+{
+    padding: 50px;
+}
+
+.spacer
+{
+    flex: 1 1 auto;
+}
+
+.logout
+{
+    display: flex;
+    flex-direction: row;
+}

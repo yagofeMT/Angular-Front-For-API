@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { FunctionService } from 'src/app/services/function.service';
 import { Router } from '@angular/router';
+import { AuthGuardService } from 'src/app/services/auth-guard.service';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class ListFunctionComponent implements OnInit{
   autoCompleteInput = new FormControl();
   optionsFunction: string[] = [];
   NamesFunctions: Observable<string[]> | undefined;
+  isAdm : boolean | undefined;
 
   @ViewChild(MatPaginator, { static: true })
   paginator!: MatPaginator;
@@ -32,11 +34,11 @@ export class ListFunctionComponent implements OnInit{
   @ViewChild(MatSort, {static: true} )
   sort! : MatSort
 
-
-
-  constructor(private FunctionService: FunctionService, private dialog: MatDialog, private router: Router, ) { }
+  constructor(private FunctionService: FunctionService, private dialog: MatDialog, private router: Router, private authGuard : AuthGuardService) { }
 
   ngOnInit(): void {
+
+    this.isAdm = this.authGuard.CheckAdm();
 
     this.FunctionService.GetAll().subscribe((result) => {
       result.forEach((func) => {

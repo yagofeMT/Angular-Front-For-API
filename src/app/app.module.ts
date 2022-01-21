@@ -36,8 +36,27 @@ import { DialogDeleteFunctionComponent } from './componentes/Funcao/list-functio
 import { EditFunctionComponent } from './componentes/Funcao/edit/edit.component';
 import { NewFunctionComponent } from './componentes/Funcao/new-function/new-function.component';
 import { RegisterUserComponent } from './componentes/Register/register-user/register-user.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { LoginUserComponent } from './componentes/Register/login-user/login-user.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { DashboardComponent } from './componentes/Dashboard/dashboard/dashboard.component';
+import { HeaderComponent } from './componentes/Dashboard/header/header.component';
+import { MatListModule } from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { AuthGuardService } from './services/auth-guard.service';
+import { NewCardComponent } from './componentes/Card/new-card/new-card.component';
 
 
+export function GetTokenUser(){
+  return localStorage.getItem("tokenUserSignIn");
+}
+
+const maskConfigFunction: () => Partial<IConfig> = () => {
+  return {
+    validation: false,
+  };
+};
 
 
 @NgModule({
@@ -51,7 +70,11 @@ import { RegisterUserComponent } from './componentes/Register/register-user/regi
     DialogDeleteFunctionComponent,
     EditFunctionComponent,
     NewFunctionComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    LoginUserComponent,
+    DashboardComponent,
+    HeaderComponent,
+    NewCardComponent
   ],
   imports: [
     HttpClientModule,
@@ -77,13 +100,25 @@ import { RegisterUserComponent } from './componentes/Register/register-user/regi
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    NgxMaskModule.forRoot(maskConfigFunction),
+    MaterialFileInputModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter : GetTokenUser,
+        allowedDomains: ['localhost:5089'],
+        disallowedRoutes: []
+      }
+    }),
+    MatListModule,
+    MatToolbarModule,
   ],
   providers: [
     HttpClientModule,
     HttpClient,
     TypesService,
     CategorysService,
+    AuthGuardService
     
   ],
   bootstrap: [AppComponent]

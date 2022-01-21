@@ -5,7 +5,8 @@ import { Category } from '../models/Category';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('TokenUserSignIn')}`
   })
 };
 

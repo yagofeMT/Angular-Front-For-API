@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Register } from '../models/Register';
 import { importType } from '@angular/compiler/src/output/output_ast';
 import { Observable } from 'rxjs';
+import { LoginVM } from '../models/LoginVM';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -35,5 +36,11 @@ Url : string  = 'https://localhost:7089/api/User'
   {
     const apiURL = `${this.Url}/${id}`
     return this.http.get<Register>(apiURL)
+  }
+
+  Login(Login : LoginVM) : Observable<any>
+  {
+    const apiUrl = `${this.Url}/Login`
+    return  this.http.post<LoginVM>(apiUrl, Login, httpOptions)
   }
 }
