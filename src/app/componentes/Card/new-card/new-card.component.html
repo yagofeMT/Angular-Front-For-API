@@ -1,16 +1,16 @@
 <div>
-   <mat-progress-bar mode="buffer"></mat-progress-bar>
+    <mat-progress-bar mode="buffer"></mat-progress-bar>
 </div>
 <div class="divCard">
-   <mat-card>
-       <mat-card-header>
-           <mat-card-title>
-               <h3>Sign In Category</h3>
-           </mat-card-title>
-       </mat-card-header>
-       <form>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                <h3>Add Card</h3>
+            </mat-card-title>
+        </mat-card-header>
+        <form [formGroup]="form" (ngSubmit)="AddCard()">
 
-           <!-- <div class="cardErros" *ngIf="erros.length > 0">
+            <!-- <div class="cardErros" *ngIf="erros.length > 0">
                <mat-card>
                 <mat-card-header>
                     <mat-card-title>
@@ -26,28 +26,42 @@
                </mat-card>
            </div> -->
 
-           <mat-card-content>
-               <div>
-                   <mat-form-field>
-                       <mat-label>Name</mat-label>
-                       <input matInput type="text" formControlName="name" placeholder="Enter the name of the category"
-                           required>
-                       <!-- <mat-error *ngIf="propriedade.name.touched && propriedade.name.invalid">
+            <mat-card-content>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Name</mat-label>
+                        <input matInput type="text" formControlName="Name" placeholder="Enter the name of the Card"
+                            required>
+                        <!-- <mat-error *ngIf="propriedade.name.touched && propriedade.name.invalid">
                            <sup>*</sup> Enter name category
                        </mat-error> -->
-                   </mat-form-field>
-               </div>
-               <div>
-                   <mat-form-field>
-                       <mat-label>Icone</mat-label>
-                       <input matInput type="text" formControlName="icone"
-                           placeholder="Enter the icon cod of the category" required>
-                       <!-- <mat-error *ngIf="propriedade.icone.touched && propriedade.icone.invalid">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Flag</mat-label>
+                        <input matInput type="text" formControlName="Flag" placeholder="Enter the Flag of the Card"
+                            required>
+                        <!-- <mat-error *ngIf="propriedade.icone.touched && propriedade.icone.invalid">
                            <sup>*</sup> Enter name icon
                        </mat-error> -->
-                   </mat-form-field>
-               </div>
-               <!-- <div>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Number</mat-label>
+                        <input matInput type="text" formControlName="Number" placeholder="Enter the Number of the Card"
+                            mask="0000 0000 0000 0000" required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Limite</mat-label>
+                        <input matInput type="number" formControlName="Limite"
+                            placeholder="Enter the Limite of the Card" required>
+                    </mat-form-field>
+                </div>
+                <!-- <div>
                    <mat-form-field>
                        <mat-label>Select Type</mat-label>
                        <mat-select formControlName="typeId" required="">
@@ -58,14 +72,14 @@
                        </mat-error>
                    </mat-form-field>
                </div> -->
-           </mat-card-content>
-           <mat-divider></mat-divider>
-           <mat-card-actions>
-               <div>
-                   <button type="submit" mat-stroked-button color="primary">Save</button>
-                   <button mat-stroked-button color="warn" type="button">Back</button>
-               </div>
-           </mat-card-actions>
-       </form>
-   </mat-card>
+            </mat-card-content>
+            <mat-divider></mat-divider>
+            <mat-card-actions>
+                <div>
+                    <button type="submit" mat-stroked-button color="primary" [disabled]="form.invalid">Save</button>
+                    <button mat-stroked-button color="warn" type="button" (click)="BackList()">Back</button>
+                </div>
+            </mat-card-actions>
+        </form>
+    </mat-card>
 </div>

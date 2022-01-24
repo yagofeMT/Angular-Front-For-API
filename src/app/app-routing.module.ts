@@ -12,6 +12,7 @@ import { LoginUserComponent } from './componentes/Register/login-user/login-user
 import { DashboardComponent } from './componentes/Dashboard/dashboard/dashboard.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { NewCardComponent } from './componentes/Card/new-card/new-card.component';
+import { ListCardUserComponent } from './componentes/Card/list-card-user/list-card-user.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,10 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
     children: [
       {
-        path : 'card', component : NewCardComponent
+        path : 'card', component : ListCardUserComponent
+      },
+      {
+        path : 'card/newcard' , component : NewCardComponent
       },
       {
         path : 'categorys/list', component: ListCategorysComponent

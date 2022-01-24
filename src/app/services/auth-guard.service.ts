@@ -28,6 +28,7 @@ export class AuthGuardService implements CanActivate {
   {
     const token = localStorage.getItem('tokenUserSignIn');
     const tokenUser : any = decode(token!);
+
     
 
     if(tokenUser.role == 'Administrador')

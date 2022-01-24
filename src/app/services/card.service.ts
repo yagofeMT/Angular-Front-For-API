@@ -23,8 +23,20 @@ export class CardService {
   constructor(private http: HttpClient) { }
 
 
-  GetAll() : Observable<Card[]> 
+  GetCardUser(UserId : any) : Observable<Card[]> 
   {
-    return this.http.get<Card[]>(this.Url)
+    const apiUrl = `${this.Url}/GetCardsUser/${UserId}`;
+    return this.http.get<Card[]>(apiUrl)
+  }
+
+  AddCardUser(card : Card) : Observable<any>
+  {
+    return this.http.post<Card>(this.Url, card, httpOptions)
+  }
+
+  FilterCard(name : string, userid : string) : Observable<Card[]>
+  {
+    const apiUrl = `${this.Url}/FilterCard/${name}-${userid}`;
+    return this.http.get<Card[]>(apiUrl)
   }
 }

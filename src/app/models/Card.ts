@@ -5,5 +5,5 @@ export class Card
     Flag : string | undefined;
     Number: string | undefined;
     Limite : number | undefined;
-    UserId : number | undefined;
+    UserId : string | undefined;
 }
